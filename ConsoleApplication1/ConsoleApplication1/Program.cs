@@ -16,6 +16,9 @@ using System.Diagnostics;
 
 namespace ConsoleApplication1
 {
+    //http://andy.edinborough.org/Reading-Entity-Framework-Code-First-Objects-from-a-Stored-Procedure
+    //http://www.c-sharpcorner.com/UploadFile/ff2f08/call-store-procedure-from-entity-framework/
+
     class Program
     {
         public const string DespachoDbConnectionStringName = "DespachoConnectionString";
@@ -36,7 +39,7 @@ namespace ConsoleApplication1
                 List<RecepcionTelefonica> rts;
                 using (DespachoEntities context = new DespachoEntities())
                 {
-                    rts = context.ObtenerRecepcionTelefonicas().ToList();
+                    rts = context.ObtenerRecepcionTelefonicas(System.Data.Entity.Core.Objects.MergeOption.NoTracking).ToList();
                 }
                 sw.Stop();
                 elapsed = sw.Elapsed.TotalSeconds;
