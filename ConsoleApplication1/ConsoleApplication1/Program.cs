@@ -5,6 +5,8 @@ using System.Data.Common;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
@@ -54,6 +56,15 @@ namespace ConsoleApplication1
             //Console.WriteLine("Hola mundo");
             Console.ReadKey();
         }
+        
+        /// <summary>
+        /// Returns the set name for a given entity type (http://social.msdn.microsoft.com/Forums/en-US/adodotnetentityframework/thread/7a29d4e3-8550-43dd-aa09-2bb859466c0d)
+        /// </summary>
+        /// <typeparam name="T">The entity type</typeparam>
+        private static string GetEntitySetName<T>(ObjectContext o)
+        {
+            return o.MetadataWorkspace.GetEntityContainer(o.DefaultContainerName, DataSpace.CSpace).BaseEntitySets.FirstOrDefault(bes => bes.ElementType.Name == typeof(T).Name).Name;
+        }
 
         public static List<RecepcionTelefonica> LeerSQLDataReader()
         {
@@ -76,7 +87,8 @@ namespace ConsoleApplication1
                         var sqlReader = (DbDataReader)cmd.ExecuteReader();
                         var adapter = (IObjectContextAdapter)context;
                         var objectContext = adapter.ObjectContext;
-                        rts = objectContext.Translate<RecepcionTelefonica>(sqlReader).ToList();
+                        //var entitySetName = GetEntitySetName<RecepcionTelefonica>(objectContext);
+                        rts = objectContext.Translate<RecepcionTelefonica>(sqlReader,"RecepcionTelefonica",MergeOption.NoTracking).ToList();
                     }
                     catch (Exception e) { Console.WriteLine("Error: " + e.Message); }
                     if (con.State == System.Data.ConnectionState.Open) con.Close();
