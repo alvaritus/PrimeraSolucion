@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DespachoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="RecepcionTelefonica">
+          <Key>
+            <PropertyRef Name="IdRT" />
+          </Key>
+          <Property Name="IdRT" Type="decimal" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="R1IdServicioLS" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="FhLlamada" Type="datetime" />
+          <Property Name="NroLlamado" Type="smallint" />
+          <Property Name="CuandoSiniestro" Type="nchar" MaxLength="25" />
+          <Property Name="IdTipoSiniestro" Type="smallint" />
+          <Property Name="Lesionado" Type="bit" />
+          <Property Name="DenunciaPolicial" Type="bit" />
+          <Property Name="Llaves" Type="bit" />
+          <Property Name="IdDepartamentoSiniestro" Type="smallint" />
+          <Property Name="BarrioSiniestro" Type="varchar" MaxLength="40" />
+          <Property Name="CalleSiniestro" Type="varchar" MaxLength="100" />
+          <Property Name="NroPuertaSiniestro" Type="varchar" MaxLength="5" />
+          <Property Name="EsquinaSiniestro" Type="varchar" MaxLength="100" />
+          <Property Name="RutaSiniestro" Type="varchar" MaxLength="15" />
+          <Property Name="KilometroSiniestro" Type="smallint" />
+          <Property Name="LatitudSiniestro" Type="decimal" Precision="17" Scale="14" />
+          <Property Name="LongitudSiniestro" Type="decimal" Precision="17" Scale="14" />
+          <Property Name="TipoBusquedaSiniestro" Type="char" MaxLength="1" />
+          <Property Name="SeguroBse" Type="bit" Nullable="false" />
+          <Property Name="Circula" Type="bit" Nullable="false" />
+          <Property Name="CantidadVehiculos" Type="smallint" />
+          <Property Name="Rectificacion" Type="bit" />
+          <Property Name="TipoAsistencia" Type="char" MaxLength="1" />
+          <Property Name="SubZona" Type="char" MaxLength="1" />
+          <Property Name="Programado" Type="bit" />
+          <Property Name="FhProgramada" Type="datetime" />
+          <Property Name="IdLugarPreEstablecido" Type="smallint" />
+          <Property Name="IdDepartamentoConcurrencia" Type="smallint" />
+          <Property Name="BarrioConcurrencia" Type="varchar" MaxLength="40" />
+          <Property Name="CalleConcurrencia" Type="varchar" MaxLength="100" />
+          <Property Name="NroPuertaConcurrencia" Type="varchar" MaxLength="5" />
+          <Property Name="EsquinaConcurrencia" Type="varchar" MaxLength="100" />
+          <Property Name="RutaConcurrencia" Type="varchar" MaxLength="5" />
+          <Property Name="KilometroConcurrencia" Type="smallint" />
+          <Property Name="LatitudConcurrencia" Type="decimal" Precision="17" Scale="14" />
+          <Property Name="LongitudConcurrencia" Type="decimal" Precision="17" Scale="14" />
+          <Property Name="TipoBusquedaConcurrencia" Type="char" MaxLength="1" />
+          <Property Name="ReferenciaUbicacion" Type="varchar" MaxLength="100" />
+          <Property Name="MatriculaDenunciante" Type="nchar" MaxLength="8" />
+          <Property Name="IdTipoVehiculo" Type="smallint" />
+          <Property Name="Marca" Type="nchar" MaxLength="15" />
+          <Property Name="Modelo" Type="nchar" MaxLength="15" />
+          <Property Name="Color" Type="nchar" MaxLength="10" />
+          <Property Name="MatriculaContraParte1" Type="nchar" MaxLength="8" />
+          <Property Name="MarcaContraParte1" Type="nchar" MaxLength="15" />
+          <Property Name="ModeloContraParte1" Type="nchar" MaxLength="15" />
+          <Property Name="ColorContraParte1" Type="nchar" MaxLength="10" />
+          <Property Name="MatriculaContraParte2" Type="nchar" MaxLength="8" />
+          <Property Name="MarcaContraParte2" Type="nchar" MaxLength="15" />
+          <Property Name="ModeloContraParte2" Type="nchar" MaxLength="15" />
+          <Property Name="ColorContraParte2" Type="nchar" MaxLength="10" />
+          <Property Name="ObsContraPartes" Type="varchar" MaxLength="200" />
+          <Property Name="NombreLlama" Type="varchar" MaxLength="60" />
+          <Property Name="TelefonoLlamo" Type="varchar" MaxLength="20" />
+          <Property Name="NombreConductor" Type="varchar" MaxLength="200" />
+          <Property Name="TelefonoConductor" Type="varchar" MaxLength="20" />
+          <Property Name="ObservacionesLlamado" Type="varchar" MaxLength="200" />
+          <Property Name="R1FhMaxima" Type="datetime" />
+          <Property Name="TiempoAtencion" Type="smallint" />
+          <Property Name="R1Estado" Type="nchar" MaxLength="10" />
+          <Property Name="IdUsuarioRecepciono" Type="uniqueidentifier" />
+          <Property Name="IdUsuarioModifico" Type="uniqueidentifier" />
+          <Property Name="FechaHoraModificacion" Type="datetime" />
+          <Property Name="PlanNew" Type="nvarchar" MaxLength="20" />
+          <Property Name="FechaHoraAsignado" Type="datetime" />
+          <Property Name="MovilAsignado" Type="int" />
+          <Property Name="FechaHoraLLegada" Type="datetime" />
+          <Property Name="Demora" Type="int" />
+          <Property Name="Tarde" Type="int" />
+          <Property Name="FechaHoraFinalizo" Type="datetime" />
+          <Property Name="TiempoAsistencia" Type="int" />
+          <Property Name="Situacion" Type="varchar(max)" />
+          <Property Name="CantidadDePartes" Type="int" />
+          <Property Name="ConcurreAbogado" Type="uniqueidentifier" />
+          <Property Name="Operador" Type="uniqueidentifier" />
+          <Property Name="FechaHoraUltimaModificacionOperador" Type="datetime" />
+          <Property Name="FotosSinDenunciante" Type="int" />
+          <Property Name="Testigos" Type="int" />
+          <Property Name="SiniestrosReclamacionesVarias" Type="int" />
+          <Property Name="ConcurreAbogadoSiNo" Type="bit" />
+          <Property Name="DatosAbogado" Type="nvarchar(max)" />
+          <Property Name="ObservacionesAbogado" Type="nvarchar(max)" />
+          <Property Name="FechaHoraLLamadaAbogado" Type="datetime" />
+          <Property Name="FechaHoraLLegadaAbogado" Type="datetime" />
+          <Property Name="IdUsuarioQueConvocaAlAbogado" Type="uniqueidentifier" />
+          <Property Name="ConcurreMovil" Type="bit" Nullable="false" />
+          <Property Name="IdMotivoCancelacionRT" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Despacho.dbo.RecepcionTelefonicaAuditoriaDeEstados' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RecepcionTelefonicaAuditoriaDeEstados">
+          <Key>
+            <PropertyRef Name="IdRT" />
+            <PropertyRef Name="FechaHora" />
+            <PropertyRef Name="Operador" />
+            <PropertyRef Name="R1Estado" />
+          </Key>
+          <Property Name="IdRT" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime" Nullable="false" />
+          <Property Name="Operador" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="R1Estado" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Function Name="ObtenerRecepcionTelefonicas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DespachoModelStoreContainer">
+          <EntitySet Name="RecepcionTelefonica" EntityType="Self.RecepcionTelefonica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecepcionTelefonicaAuditoriaDeEstados" EntityType="Self.RecepcionTelefonicaAuditoriaDeEstados" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RecepcionTelefonicaAuditoriaDeEstados].[IdRT] AS [IdRT], 
+    [RecepcionTelefonicaAuditoriaDeEstados].[FechaHora] AS [FechaHora], 
+    [RecepcionTelefonicaAuditoriaDeEstados].[Operador] AS [Operador], 
+    [RecepcionTelefonicaAuditoriaDeEstados].[R1Estado] AS [R1Estado]
+    FROM [dbo].[RecepcionTelefonicaAuditoriaDeEstados] AS [RecepcionTelefonicaAuditoriaDeEstados]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DespachoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="RecepcionTelefonica">
+          <Key>
+            <PropertyRef Name="IdRT" />
+          </Key>
+          <Property Name="IdRT" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="R1IdServicioLS" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="FhLlamada" Type="DateTime" Precision="3" />
+          <Property Name="NroLlamado" Type="Int16" />
+          <Property Name="CuandoSiniestro" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="IdTipoSiniestro" Type="Int16" />
+          <Property Name="Lesionado" Type="Boolean" />
+          <Property Name="DenunciaPolicial" Type="Boolean" />
+          <Property Name="Llaves" Type="Boolean" />
+          <Property Name="IdDepartamentoSiniestro" Type="Int16" />
+          <Property Name="BarrioSiniestro" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CalleSiniestro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NroPuertaSiniestro" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EsquinaSiniestro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RutaSiniestro" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="KilometroSiniestro" Type="Int16" />
+          <Property Name="LatitudSiniestro" Type="Decimal" Precision="17" Scale="14" />
+          <Property Name="LongitudSiniestro" Type="Decimal" Precision="17" Scale="14" />
+          <Property Name="TipoBusquedaSiniestro" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SeguroBse" Type="Boolean" Nullable="false" />
+          <Property Name="Circula" Type="Boolean" Nullable="false" />
+          <Property Name="CantidadVehiculos" Type="Int16" />
+          <Property Name="Rectificacion" Type="Boolean" />
+          <Property Name="TipoAsistencia" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SubZona" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Programado" Type="Boolean" />
+          <Property Name="FhProgramada" Type="DateTime" Precision="3" />
+          <Property Name="IdLugarPreEstablecido" Type="Int16" />
+          <Property Name="IdDepartamentoConcurrencia" Type="Int16" />
+          <Property Name="BarrioConcurrencia" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CalleConcurrencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NroPuertaConcurrencia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EsquinaConcurrencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RutaConcurrencia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="KilometroConcurrencia" Type="Int16" />
+          <Property Name="LatitudConcurrencia" Type="Decimal" Precision="17" Scale="14" />
+          <Property Name="LongitudConcurrencia" Type="Decimal" Precision="17" Scale="14" />
+          <Property Name="TipoBusquedaConcurrencia" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ReferenciaUbicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MatriculaDenunciante" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="IdTipoVehiculo" Type="Int16" />
+          <Property Name="Marca" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MatriculaContraParte1" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="MarcaContraParte1" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ModeloContraParte1" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ColorContraParte1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MatriculaContraParte2" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="MarcaContraParte2" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ModeloContraParte2" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ColorContraParte2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ObsContraPartes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NombreLlama" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoLlamo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NombreConductor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoConductor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ObservacionesLlamado" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="R1FhMaxima" Type="DateTime" Precision="3" />
+          <Property Name="TiempoAtencion" Type="Int16" />
+          <Property Name="R1Estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IdUsuarioRecepciono" Type="Guid" />
+          <Property Name="IdUsuarioModifico" Type="Guid" />
+          <Property Name="FechaHoraModificacion" Type="DateTime" Precision="3" />
+          <Property Name="PlanNew" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FechaHoraAsignado" Type="DateTime" Precision="3" />
+          <Property Name="MovilAsignado" Type="Int32" />
+          <Property Name="FechaHoraLLegada" Type="DateTime" Precision="3" />
+          <Property Name="Demora" Type="Int32" />
+          <Property Name="Tarde" Type="Int32" />
+          <Property Name="FechaHoraFinalizo" Type="DateTime" Precision="3" />
+          <Property Name="TiempoAsistencia" Type="Int32" />
+          <Property Name="Situacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadDePartes" Type="Int32" />
+          <Property Name="ConcurreAbogado" Type="Guid" />
+          <Property Name="Operador" Type="Guid" />
+          <Property Name="FechaHoraUltimaModificacionOperador" Type="DateTime" Precision="3" />
+          <Property Name="FotosSinDenunciante" Type="Int32" />
+          <Property Name="Testigos" Type="Int32" />
+          <Property Name="SiniestrosReclamacionesVarias" Type="Int32" />
+          <Property Name="ConcurreAbogadoSiNo" Type="Boolean" />
+          <Property Name="DatosAbogado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ObservacionesAbogado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaHoraLLamadaAbogado" Type="DateTime" Precision="3" />
+          <Property Name="FechaHoraLLegadaAbogado" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioQueConvocaAlAbogado" Type="Guid" />
+          <Property Name="ConcurreMovil" Type="Boolean" Nullable="false" />
+          <Property Name="IdMotivoCancelacionRT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RecepcionTelefonicaAuditoriaDeEstados">
+          <Key>
+            <PropertyRef Name="IdRT" />
+            <PropertyRef Name="FechaHora" />
+            <PropertyRef Name="Operador" />
+            <PropertyRef Name="R1Estado" />
+          </Key>
+          <Property Name="IdRT" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Operador" Type="Guid" Nullable="false" />
+          <Property Name="R1Estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DespachoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RecepcionTelefonica" EntityType="Self.RecepcionTelefonica" />
+          <EntitySet Name="RecepcionTelefonicaAuditoriaDeEstados" EntityType="Self.RecepcionTelefonicaAuditoriaDeEstados" />
+          <FunctionImport Name="ObtenerRecepcionTelefonicas" EntitySet="RecepcionTelefonica" ReturnType="Collection(DespachoModel.RecepcionTelefonica)" />
+          <FunctionImport Name="ObtenerRecepcionesTelefonicas" EntitySet="RecepcionTelefonica" ReturnType="Collection(DespachoModel.RecepcionTelefonica)" />
+        </EntityContainer>
+        <ComplexType Name="ObtenerRecepcionTelefonicas_Result">
+          <Property Type="Decimal" Name="IdRT" Nullable="false" Precision="10" Scale="0" />
+          <Property Type="Decimal" Name="R1IdServicioLS" Nullable="true" Precision="10" Scale="0" />
+          <Property Type="DateTime" Name="FhLlamada" Nullable="true" Precision="23" />
+          <Property Type="Int16" Name="NroLlamado" Nullable="true" />
+          <Property Type="String" Name="CuandoSiniestro" Nullable="true" MaxLength="25" />
+          <Property Type="Int16" Name="IdTipoSiniestro" Nullable="true" />
+          <Property Type="Boolean" Name="Lesionado" Nullable="true" />
+          <Property Type="Boolean" Name="DenunciaPolicial" Nullable="true" />
+          <Property Type="Boolean" Name="Llaves" Nullable="true" />
+          <Property Type="Int16" Name="IdDepartamentoSiniestro" Nullable="true" />
+          <Property Type="String" Name="BarrioSiniestro" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="CalleSiniestro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NroPuertaSiniestro" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="EsquinaSiniestro" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RutaSiniestro" Nullable="true" MaxLength="15" />
+          <Property Type="Int16" Name="KilometroSiniestro" Nullable="true" />
+          <Property Type="Decimal" Name="LatitudSiniestro" Nullable="true" Precision="17" Scale="14" />
+          <Property Type="Decimal" Name="LongitudSiniestro" Nullable="true" Precision="17" Scale="14" />
+          <Property Type="String" Name="TipoBusquedaSiniestro" Nullable="true" MaxLength="1" />
+          <Property Type="Boolean" Name="SeguroBse" Nullable="false" />
+          <Property Type="Boolean" Name="Circula" Nullable="false" />
+          <Property Type="Int16" Name="CantidadVehiculos" Nullable="true" />
+          <Property Type="Boolean" Name="Rectificacion" Nullable="true" />
+          <Property Type="String" Name="TipoAsistencia" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="SubZona" Nullable="true" MaxLength="1" />
+          <Property Type="Boolean" Name="Programado" Nullable="true" />
+          <Property Type="DateTime" Name="FhProgramada" Nullable="true" Precision="23" />
+          <Property Type="Int16" Name="IdLugarPreEstablecido" Nullable="true" />
+          <Property Type="Int16" Name="IdDepartamentoConcurrencia" Nullable="true" />
+          <Property Type="String" Name="BarrioConcurrencia" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="CalleConcurrencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NroPuertaConcurrencia" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="EsquinaConcurrencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RutaConcurrencia" Nullable="true" MaxLength="5" />
+          <Property Type="Int16" Name="KilometroConcurrencia" Nullable="true" />
+          <Property Type="Decimal" Name="LatitudConcurrencia" Nullable="true" Precision="17" Scale="14" />
+          <Property Type="Decimal" Name="LongitudConcurrencia" Nullable="true" Precision="17" Scale="14" />
+          <Property Type="String" Name="TipoBusquedaConcurrencia" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="ReferenciaUbicacion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MatriculaDenunciante" Nullable="true" MaxLength="8" />
+          <Property Type="Int16" Name="IdTipoVehiculo" Nullable="true" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Modelo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="MatriculaContraParte1" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="MarcaContraParte1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ModeloContraParte1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ColorContraParte1" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="MatriculaContraParte2" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="MarcaContraParte2" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ModeloContraParte2" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="ColorContraParte2" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ObsContraPartes" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="NombreLlama" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoLlamo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="NombreConductor" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TelefonoConductor" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ObservacionesLlamado" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="R1FhMaxima" Nullable="true" Precision="23" />
+          <Property Type="Int16" Name="TiempoAtencion" Nullable="true" />
+          <Property Type="String" Name="R1Estado" Nullable="true" MaxLength="10" />
+          <Property Type="Guid" Name="IdUsuarioRecepciono" Nullable="true" />
+          <Property Type="Guid" Name="IdUsuarioModifico" Nullable="true" />
+          <Property Type="DateTime" Name="FechaHoraModificacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="PlanNew" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="FechaHoraAsignado" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="MovilAsignado" Nullable="true" />
+          <Property Type="DateTime" Name="FechaHoraLLegada" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Demora" Nullable="true" />
+          <Property Type="Int32" Name="Tarde" Nullable="true" />
+          <Property Type="DateTime" Name="FechaHoraFinalizo" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="TiempoAsistencia" Nullable="true" />
+          <Property Type="String" Name="Situacion" Nullable="true" />
+          <Property Type="Int32" Name="CantidadDePartes" Nullable="true" />
+          <Property Type="Guid" Name="ConcurreAbogado" Nullable="true" />
+          <Property Type="Guid" Name="Operador" Nullable="true" />
+          <Property Type="DateTime" Name="FechaHoraUltimaModificacionOperador" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="FotosSinDenunciante" Nullable="true" />
+          <Property Type="Int32" Name="Testigos" Nullable="true" />
+          <Property Type="Int32" Name="SiniestrosReclamacionesVarias" Nullable="true" />
+          <Property Type="Boolean" Name="ConcurreAbogadoSiNo" Nullable="true" />
+          <Property Type="String" Name="DatosAbogado" Nullable="true" />
+          <Property Type="String" Name="ObservacionesAbogado" Nullable="true" />
+          <Property Type="DateTime" Name="FechaHoraLLamadaAbogado" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaHoraLLegadaAbogado" Nullable="true" Precision="23" />
+          <Property Type="Guid" Name="IdUsuarioQueConvocaAlAbogado" Nullable="true" />
+          <Property Type="Boolean" Name="ConcurreMovil" Nullable="false" />
+          <Property Type="Int32" Name="IdMotivoCancelacionRT" Nullable="true" />
+          <Property Type="String" Name="DescripcionMotivoCancelacionRT" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DespachoModelStoreContainer" CdmEntityContainer="DespachoEntities">
+          <EntitySetMapping Name="RecepcionTelefonica">
+            <EntityTypeMapping TypeName="DespachoModel.RecepcionTelefonica">
+              <MappingFragment StoreEntitySet="RecepcionTelefonica">
+                <ScalarProperty Name="IdRT" ColumnName="IdRT" />
+                <ScalarProperty Name="R1IdServicioLS" ColumnName="R1IdServicioLS" />
+                <ScalarProperty Name="FhLlamada" ColumnName="FhLlamada" />
+                <ScalarProperty Name="NroLlamado" ColumnName="NroLlamado" />
+                <ScalarProperty Name="CuandoSiniestro" ColumnName="CuandoSiniestro" />
+                <ScalarProperty Name="IdTipoSiniestro" ColumnName="IdTipoSiniestro" />
+                <ScalarProperty Name="Lesionado" ColumnName="Lesionado" />
+                <ScalarProperty Name="DenunciaPolicial" ColumnName="DenunciaPolicial" />
+                <ScalarProperty Name="Llaves" ColumnName="Llaves" />
+                <ScalarProperty Name="IdDepartamentoSiniestro" ColumnName="IdDepartamentoSiniestro" />
+                <ScalarProperty Name="BarrioSiniestro" ColumnName="BarrioSiniestro" />
+                <ScalarProperty Name="CalleSiniestro" ColumnName="CalleSiniestro" />
+                <ScalarProperty Name="NroPuertaSiniestro" ColumnName="NroPuertaSiniestro" />
+                <ScalarProperty Name="EsquinaSiniestro" ColumnName="EsquinaSiniestro" />
+                <ScalarProperty Name="RutaSiniestro" ColumnName="RutaSiniestro" />
+                <ScalarProperty Name="KilometroSiniestro" ColumnName="KilometroSiniestro" />
+                <ScalarProperty Name="LatitudSiniestro" ColumnName="LatitudSiniestro" />
+                <ScalarProperty Name="LongitudSiniestro" ColumnName="LongitudSiniestro" />
+                <ScalarProperty Name="TipoBusquedaSiniestro" ColumnName="TipoBusquedaSiniestro" />
+                <ScalarProperty Name="SeguroBse" ColumnName="SeguroBse" />
+                <ScalarProperty Name="Circula" ColumnName="Circula" />
+                <ScalarProperty Name="CantidadVehiculos" ColumnName="CantidadVehiculos" />
+                <ScalarProperty Name="Rectificacion" ColumnName="Rectificacion" />
+                <ScalarProperty Name="TipoAsistencia" ColumnName="TipoAsistencia" />
+                <ScalarProperty Name="SubZona" ColumnName="SubZona" />
+                <ScalarProperty Name="Programado" ColumnName="Programado" />
+                <ScalarProperty Name="FhProgramada" ColumnName="FhProgramada" />
+                <ScalarProperty Name="IdLugarPreEstablecido" ColumnName="IdLugarPreEstablecido" />
+                <ScalarProperty Name="IdDepartamentoConcurrencia" ColumnName="IdDepartamentoConcurrencia" />
+                <ScalarProperty Name="BarrioConcurrencia" ColumnName="BarrioConcurrencia" />
+                <ScalarProperty Name="CalleConcurrencia" ColumnName="CalleConcurrencia" />
+                <ScalarProperty Name="NroPuertaConcurrencia" ColumnName="NroPuertaConcurrencia" />
+                <ScalarProperty Name="EsquinaConcurrencia" ColumnName="EsquinaConcurrencia" />
+                <ScalarProperty Name="RutaConcurrencia" ColumnName="RutaConcurrencia" />
+                <ScalarProperty Name="KilometroConcurrencia" ColumnName="KilometroConcurrencia" />
+                <ScalarProperty Name="LatitudConcurrencia" ColumnName="LatitudConcurrencia" />
+                <ScalarProperty Name="LongitudConcurrencia" ColumnName="LongitudConcurrencia" />
+                <ScalarProperty Name="TipoBusquedaConcurrencia" ColumnName="TipoBusquedaConcurrencia" />
+                <ScalarProperty Name="ReferenciaUbicacion" ColumnName="ReferenciaUbicacion" />
+                <ScalarProperty Name="MatriculaDenunciante" ColumnName="MatriculaDenunciante" />
+                <ScalarProperty Name="IdTipoVehiculo" ColumnName="IdTipoVehiculo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="MatriculaContraParte1" ColumnName="MatriculaContraParte1" />
+                <ScalarProperty Name="MarcaContraParte1" ColumnName="MarcaContraParte1" />
+                <ScalarProperty Name="ModeloContraParte1" ColumnName="ModeloContraParte1" />
+                <ScalarProperty Name="ColorContraParte1" ColumnName="ColorContraParte1" />
+                <ScalarProperty Name="MatriculaContraParte2" ColumnName="MatriculaContraParte2" />
+                <ScalarProperty Name="MarcaContraParte2" ColumnName="MarcaContraParte2" />
+                <ScalarProperty Name="ModeloContraParte2" ColumnName="ModeloContraParte2" />
+                <ScalarProperty Name="ColorContraParte2" ColumnName="ColorContraParte2" />
+                <ScalarProperty Name="ObsContraPartes" ColumnName="ObsContraPartes" />
+                <ScalarProperty Name="NombreLlama" ColumnName="NombreLlama" />
+                <ScalarProperty Name="TelefonoLlamo" ColumnName="TelefonoLlamo" />
+                <ScalarProperty Name="NombreConductor" ColumnName="NombreConductor" />
+                <ScalarProperty Name="TelefonoConductor" ColumnName="TelefonoConductor" />
+                <ScalarProperty Name="ObservacionesLlamado" ColumnName="ObservacionesLlamado" />
+                <ScalarProperty Name="R1FhMaxima" ColumnName="R1FhMaxima" />
+                <ScalarProperty Name="TiempoAtencion" ColumnName="TiempoAtencion" />
+                <ScalarProperty Name="R1Estado" ColumnName="R1Estado" />
+                <ScalarProperty Name="IdUsuarioRecepciono" ColumnName="IdUsuarioRecepciono" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaHoraModificacion" ColumnName="FechaHoraModificacion" />
+                <ScalarProperty Name="PlanNew" ColumnName="PlanNew" />
+                <ScalarProperty Name="FechaHoraAsignado" ColumnName="FechaHoraAsignado" />
+                <ScalarProperty Name="MovilAsignado" ColumnName="MovilAsignado" />
+                <ScalarProperty Name="FechaHoraLLegada" ColumnName="FechaHoraLLegada" />
+                <ScalarProperty Name="Demora" ColumnName="Demora" />
+                <ScalarProperty Name="Tarde" ColumnName="Tarde" />
+                <ScalarProperty Name="FechaHoraFinalizo" ColumnName="FechaHoraFinalizo" />
+                <ScalarProperty Name="TiempoAsistencia" ColumnName="TiempoAsistencia" />
+                <ScalarProperty Name="Situacion" ColumnName="Situacion" />
+                <ScalarProperty Name="CantidadDePartes" ColumnName="CantidadDePartes" />
+                <ScalarProperty Name="ConcurreAbogado" ColumnName="ConcurreAbogado" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+                <ScalarProperty Name="FechaHoraUltimaModificacionOperador" ColumnName="FechaHoraUltimaModificacionOperador" />
+                <ScalarProperty Name="FotosSinDenunciante" ColumnName="FotosSinDenunciante" />
+                <ScalarProperty Name="Testigos" ColumnName="Testigos" />
+                <ScalarProperty Name="SiniestrosReclamacionesVarias" ColumnName="SiniestrosReclamacionesVarias" />
+                <ScalarProperty Name="ConcurreAbogadoSiNo" ColumnName="ConcurreAbogadoSiNo" />
+                <ScalarProperty Name="DatosAbogado" ColumnName="DatosAbogado" />
+                <ScalarProperty Name="ObservacionesAbogado" ColumnName="ObservacionesAbogado" />
+                <ScalarProperty Name="FechaHoraLLamadaAbogado" ColumnName="FechaHoraLLamadaAbogado" />
+                <ScalarProperty Name="FechaHoraLLegadaAbogado" ColumnName="FechaHoraLLegadaAbogado" />
+                <ScalarProperty Name="IdUsuarioQueConvocaAlAbogado" ColumnName="IdUsuarioQueConvocaAlAbogado" />
+                <ScalarProperty Name="ConcurreMovil" ColumnName="ConcurreMovil" />
+                <ScalarProperty Name="IdMotivoCancelacionRT" ColumnName="IdMotivoCancelacionRT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecepcionTelefonicaAuditoriaDeEstados">
+            <EntityTypeMapping TypeName="DespachoModel.RecepcionTelefonicaAuditoriaDeEstados">
+              <MappingFragment StoreEntitySet="RecepcionTelefonicaAuditoriaDeEstados">
+                <ScalarProperty Name="IdRT" ColumnName="IdRT" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+                <ScalarProperty Name="R1Estado" ColumnName="R1Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerRecepcionTelefonicas" FunctionName="DespachoModel.Store.ObtenerRecepcionTelefonicas">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerRecepcionesTelefonicas" FunctionName="DespachoModel.Store.ObtenerRecepcionTelefonicas" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
