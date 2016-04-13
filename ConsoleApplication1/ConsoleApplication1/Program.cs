@@ -15,6 +15,7 @@ using ADA.Despacho.CommonEntities;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace ConsoleApplication1
 {
@@ -25,38 +26,58 @@ namespace ConsoleApplication1
     {
         public const string DespachoDbConnectionStringName = "DespachoConnectionString";
 
+        //Definir el Logger
+        static ILogger Logger { get; } = ApplicationLogging.CreateLogger<Program>();
+
         static void Main(string[] args)
         {
-            for (int i = 0; i < 1001; i++)
+            ApplicationLogging.InicializarApplicationLogging();
+
+            using (Logger.BeginScopeImpl(nameof(Main)))
             {
-                Console.WriteLine("Iteración: " + (i + 1).ToString());
-                var sw = new Stopwatch();
-                sw.Start();
-                var datos = ObtenerRecepcionesTelefonicas();
-                sw.Stop();
-                var elapsed = sw.Elapsed.TotalSeconds;
-                Console.WriteLine("Con Entlib: " + elapsed.ToString());
-                sw.Reset();
-                sw.Start();
-                List<RecepcionTelefonica> rts;
-                using (DespachoEntities context = new DespachoEntities())
+                Logger.LogInformation("Comienza Main");
+                try
                 {
-                    rts = context.ObtenerRecepcionTelefonicas(System.Data.Entity.Core.Objects.MergeOption.NoTracking).ToList();
+                    for (int i = 0; i < 2; i++)
+                    {
+                        var sw = new Stopwatch();
+                        sw.Start();
+                        var datos = ObtenerRecepcionesTelefonicas();
+                        sw.Stop();
+                        var elapsedconentlib = sw.Elapsed.TotalSeconds;
+                        sw.Reset();
+                        sw.Start();
+                        List<RecepcionTelefonica> rts;
+                        using (DespachoEntities context = new DespachoEntities())
+                        {
+                            rts = context.ObtenerRecepcionTelefonicas(System.Data.Entity.Core.Objects.MergeOption.NoTracking).ToList();
+                        }
+                        sw.Stop();
+                        var elapsedef = sw.Elapsed.TotalSeconds;
+                        sw.Reset();
+                        sw.Start();
+                        var datos3 = LeerSQLDataReader();
+                        sw.Stop();
+                        var elapsedefsqldr = sw.Elapsed.TotalSeconds;
+                        var sb = new StringBuilder();
+                        sb.AppendLine("Iteración: " + (i + 1).ToString());
+                        sb.AppendLine("Con Entlib: " + elapsedconentlib.ToString());
+                        sb.AppendLine("Con EF: " + elapsedef.ToString());
+                        sb.AppendLine("Con EF SQL DATA READER: " + elapsedefsqldr.ToString());
+                        Logger.LogInformation(sb.ToString());
+                        throw new Exception("Error al realizar el test");
+                    }
+                    Console.WriteLine("Presione una tecla para terminar");
+                    Console.ReadKey();
                 }
-                sw.Stop();
-                elapsed = sw.Elapsed.TotalSeconds;
-                Console.WriteLine("Con EF: " + elapsed.ToString());
-                sw.Reset();
-                sw.Start();
-                var datos3 = LeerSQLDataReader();
-                sw.Stop();
-                elapsed = sw.Elapsed.TotalSeconds;
-                Console.WriteLine("Con EF SQL DATA READER: " + elapsed.ToString());
+                catch (Exception ex)
+                {
+                    Logger.LogCritical("Se ha producido un error en Main", ex);
+                }
+                Logger.LogInformation("Termina Main");
             }
-            //Console.WriteLine("Hola mundo");
-            Console.ReadKey();
         }
-        
+
         /// <summary>
         /// Returns the set name for a given entity type (http://social.msdn.microsoft.com/Forums/en-US/adodotnetentityframework/thread/7a29d4e3-8550-43dd-aa09-2bb859466c0d)
         /// </summary>
@@ -75,25 +96,25 @@ namespace ConsoleApplication1
 
                 string connectionString = ConfigurationManager.ConnectionStrings["DespachoConnectionString"].ConnectionString; //(context.Database.Connection as EntityConnection).StoreConnection.ConnectionString;
                 using (SqlConnection con = new SqlConnection(connectionString))
-                { 
-                    con.Open();
-                using (SqlCommand cmd = con.CreateCommand())
                 {
-                    try
+                    con.Open();
+                    using (SqlCommand cmd = con.CreateCommand())
                     {
-                        cmd.CommandText = "ObtenerRecepcionTelefonicas";
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        //cmd.CommandTimeout = 0;
-                        var sqlReader = (DbDataReader)cmd.ExecuteReader();
-                        var adapter = (IObjectContextAdapter)context;
-                        var objectContext = adapter.ObjectContext;
-                        //var entitySetName = GetEntitySetName<RecepcionTelefonica>(objectContext);
-                        rts = objectContext.Translate<RecepcionTelefonica>(sqlReader,"RecepcionTelefonica",MergeOption.NoTracking).ToList();
+                        try
+                        {
+                            cmd.CommandText = "ObtenerRecepcionTelefonicas";
+                            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                            //cmd.CommandTimeout = 0;
+                            var sqlReader = (DbDataReader)cmd.ExecuteReader();
+                            var adapter = (IObjectContextAdapter)context;
+                            var objectContext = adapter.ObjectContext;
+                            //var entitySetName = GetEntitySetName<RecepcionTelefonica>(objectContext);
+                            rts = objectContext.Translate<RecepcionTelefonica>(sqlReader, "RecepcionTelefonica", MergeOption.NoTracking).ToList();
+                        }
+                        catch (Exception e) { Console.WriteLine("Error: " + e.Message); }
+                        if (con.State == System.Data.ConnectionState.Open) con.Close();
                     }
-                    catch (Exception e) { Console.WriteLine("Error: " + e.Message); }
-                    if (con.State == System.Data.ConnectionState.Open) con.Close();
                 }
-              }
             }
             return rts;
         }
